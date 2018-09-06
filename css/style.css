@@ -1,0 +1,27 @@
+body { font-family: 'Lato', 'Times New Roman', sans-serif; }
+
+.board { max-width: 1600px; width: 100%; margin: 0 auto; background: #4BBF6B; border-radius: 15px; box-shadow: 5px 5px 2px #333; border: 3px solid #333; }
+
+.board__title { text-transform: uppercase; padding: 10px; text-align: center; }
+
+.board__button { display: block; margin: 0 auto; }
+
+.btn { padding: 3px 7px; border-radius: 5px; border: 2px solid #333; cursor: pointer; font-family: 'Lato', 'Times New Roman', sans-serif; }
+
+.btn:hover { color: #FFF; background: #333; }
+
+.board__column { display: -ms-flexbox; display: flex; -ms-flex-pack: distribute; justify-content: space-around; -ms-flex: wrap; flex: wrap; }
+
+.column { max-width: 200px; width: 100%; border: 3px solid #333; padding: 10px; margin-bottom: 15px; margin-left: 5px; margin-right: 5px; border-radius: 15px; background: #FFF; box-shadow: 5px 5px 2px #333; text-align: center; white-space: nowrap; }
+
+.column-container { border-top: 3px solid #333; padding-top: 15px; margin-top: 15px; }
+
+.column-card-list { list-style-type: none; padding: 0; margin: 5px; }
+
+.add-card { margin-left: 5px; }
+
+.btn-delete { margin-top: 5px; }
+
+.card { position: relative; border: 3px solid #333; box-shadow: 1px 1px 2px #333; margin-top: 15px; white-space: pre-wrap; }
+
+.card button.btn-delete { float: left; margin-left: 5px; }
