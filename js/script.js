@@ -32,10 +32,12 @@ $(function() {
             
             $columnAddCard.click(function () {      //jeśli wystąpi zdarzenie click...
                 var name = prompt("Wprowadź nazwę karty.");
-                if (name === null || name === '') {
+                if (name === '') {
                     alert('Podana nazwa jest nieprawidłowa. Wprowadź poprawną wartość.');
                     return;
-                }            
+                }  else if (name === null) {
+                   return; 
+                }        
                 self.addCard(new Card(name));     
             });
 
@@ -102,10 +104,12 @@ $(function() {
 
     $('.create-column').click(function(){       //podpięcie zdarzenia do przycisku tablicy o klasie create-column. Wybieramy przycis.
         var name = prompt('Wprowadź nazwę kolumny.');   //po kliknięciu uruchamia się funkcja, która poprosi o podanie nazwy kolumny, którą chcemy stworzyć.
-        if (name === null || name === '') {
+        if (name === '') {
             alert('Podana nazwa jest nieprawidłowa. Wprowadź poprawną wartość.');
             return;
-        }  
+        } else if (name === null) {
+            return;
+        }
         var column = new Column(name);
             board.addColumn(column);
     });
