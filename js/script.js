@@ -1,21 +1,4 @@
-/*WPROWADZONE ZMIANY
-    1.Stworzyłem funkcje checkEnterColumnValue - li. 8
-    2.Stworzyłem funkcje checkEnterCardValue - li. 69
-    3.Dodałem funkcje checkEnterColumnValue - li. 127
-    4.Dodałem funkcje checkEnterCardValue - li. 52
-*/
-
 $(function() {
-
-    function checkEnterColumnValue(name) {      //funkcja sprawdza czy wartość podana przez użytkownika jest prawidłowa.
-        if (name === null || name === '') {
-            alert('Podana nazwa jest nie prawidłowa. Wprowadź poprawną wartość.');
-        } else {
-            var column = new Column(name);      //Funkcja utworzy też nową instancję, która z kolei ustawi tytuł kolumny.???????
-            board.addColumn(column);        //funkcja utworzy na tablicy nową kolumne.
-        }
-        return column;
-    }    
 
     function randomString() {           //funkcja generuje id, które składa się z ciągu 10 losowo wybranych znaków
         var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';    //ciag znaków jest obiektem czy tablicą????
@@ -49,14 +32,17 @@ $(function() {
             
             $columnAddCard.click(function () {      //jeśli wystąpi zdarzenie click...
                 var name = prompt("Wprowadź nazwę karty.");
-                self.checkEnterCardValue(name);                
+                if (name === null || name === '') {
+                    alert('Podana nazwa jest nieprawidłowa. Wprowadź poprawną wartość.');
+                    return;
+                }            
+                self.addCard(new Card(name));     
             });
 
             $column.append($columnTitle)        //budowa elementu $column
                 .append($columnDelete)
                 .append($columnAddCard)
                 .append($columnCardList);
-
             return $column;     //zwrócenie przez funkcje ele. $column
         }
     }
@@ -67,16 +53,7 @@ $(function() {
         },
         removeColumn: function() {
             this.$element.remove();
-        },
-        checkEnterCardValue: function(name) {            
-            if (name === null || name === '') {
-                alert('Podana nazwa jest nie prawidłowa. Wprowadź poprawną wartość.');
-            } else {
-                var card = new Card(name);
-                this.addCard(card);
-            }
-            return card;
-        }
+        }        
     }
 
     function Card(description) {        //odpowiedzialna za konstruowanie kart podobna w budowie do klasy Column
@@ -125,7 +102,12 @@ $(function() {
 
     $('.create-column').click(function(){       //podpięcie zdarzenia do przycisku tablicy o klasie create-column. Wybieramy przycis.
         var name = prompt('Wprowadź nazwę kolumny.');   //po kliknięciu uruchamia się funkcja, która poprosi o podanie nazwy kolumny, którą chcemy stworzyć.
-        checkEnterColumnValue(name);
+        if (name === null || name === '') {
+            alert('Podana nazwa jest nieprawidłowa. Wprowadź poprawną wartość.');
+            return;
+        }  
+        var column = new Column(name);
+            board.addColumn(column);
     });
 
     // tworzenie kolumn
